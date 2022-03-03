@@ -1,0 +1,15 @@
+.cardWrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 6rem;
+}
+
+.actionButtonWrapper {
+	margin-top: 40px;
+}
+
+.bottomParagraph {
+	/* reused class */
+	composes: bottomParagraph from "../StepPhoneEmail/StepPhoneEmail.module.css";
+}

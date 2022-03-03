@@ -1,20 +1,13 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Button from "../../components/shared/Button/Button";
 import Card from "../../components/shared/Card/Card";
 import styles from "./Home.module.css";
 
 const Home = () => {
-	const signinLinkStyle = {
-		color: "#0077ff",
-		fontWeight: "bold",
-		textDecoration: "none",
-		marginLeft: "10px"
-	};
-
 	const navigate = useNavigate();
 	function startRegister() {
-		navigate("/register");
+		navigate("/authenticate");
 	}
 
 	return (
@@ -27,13 +20,10 @@ const Home = () => {
 					numquam laborum, alias culpa recusandae.
 				</p>
 				<div>
-					<Button text="Get your username" onClick={startRegister} />
+					<Button text="Let's Go" onClick={startRegister} />
 				</div>
 				<div className={styles.signinWrapper}>
 					<span className={styles.hasInvite}>Have an invite text?</span>
-					<Link style={signinLinkStyle} to="/login">
-						Sign in
-					</Link>
 				</div>
 			</Card>
 		</div>

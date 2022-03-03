@@ -7,7 +7,7 @@ const steps = {
 	2: StepOtp
 };
 
-const Login = () => {
+const Authenticate = () => {
 	const [stepNumber, setStepNumber] = useState(1);
 	const Step = steps[stepNumber];
 
@@ -18,4 +18,4 @@ const Login = () => {
 	return <Step onNext={handleNext} />;
 };
 
-export default Login;
+export default Authenticate;
