@@ -6,13 +6,6 @@
 	text-align: center;
 }
 
-.cardWrapper {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin-top: 6rem;
-}
-
 .signinWrapper {
 	margin-top: 20px;
 }

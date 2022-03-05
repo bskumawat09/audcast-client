@@ -25,7 +25,7 @@ const StepOtp = ({ onNext }) => {
 	}
 
 	return (
-		<div className={styles.cardWrapper}>
+		<div className="cardWrapper">
 			<Card title="Enter the OTP sent on your phone" icon="wink-emoji-logo.png">
 				<TextInput value={otp} onChange={(e) => setOtp(e.target.value)} />
 				<div>

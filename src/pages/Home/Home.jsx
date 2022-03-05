@@ -11,7 +11,7 @@ const Home = () => {
 	}
 
 	return (
-		<div className={styles.cardWrapper}>
+		<div className="cardWrapper">
 			<Card title="Welcome to CodersHouse!" icon="wink-emoji-logo.png">
 				<p className={styles.text}>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Est
