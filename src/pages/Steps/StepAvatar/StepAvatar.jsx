@@ -5,10 +5,12 @@ import Card from "../../../components/shared/Card/Card";
 import { activate } from "../../../http";
 import { setAvatar } from "../../../store/activateSlice";
 import { setAuth } from "../../../store/authSlice";
+import Loader from "../../../components/shared/Loader/Loader";
 import styles from "./StepAvatar.module.css";
 
 const StepAvatar = ({ onNext }) => {
 	const [image, setImage] = useState("/images/default-avatar.png");
+	const [loading, setLoading] = useState(false);
 	const dispatch = useDispatch();
 	const { name, avatar } = useSelector((state) => state.activate);
 
@@ -25,17 +27,21 @@ const StepAvatar = ({ onNext }) => {
 	}
 
 	async function submit() {
+		if (!name || !avatar) return;
+
+		setLoading(true);
 		try {
 			const { data } = await activate({ name, avatar });
 			console.log(data);
-			if (data.auth) {
-				setAuth(data);
-			}
+			dispatch(setAuth(data));
 		} catch (err) {
 			console.log(err);
+		} finally {
+			setLoading(false);
 		}
 	}
 
+	if (loading) return <Loader message="Activation in progress" />;
 	return (
 		<div className="cardWrapper">
 			<Card title={`Hello, ${name}`} icon="wink-emoji-logo.png">
