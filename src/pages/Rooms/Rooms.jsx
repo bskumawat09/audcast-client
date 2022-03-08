@@ -1,30 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import AddRoomModal from "../../components/AddRoomModal/AddRoomModal";
 import RoomCard from "../../components/RoomCard/RoomCard";
+import { getRooms } from "../../http";
 import styles from "./Rooms.module.css";
 
-// dummy array of rooms data
-const rooms = [
-	{
-		id: 1,
-		topic: "Which framework best for frontend ?",
-		speakers: [
-			{ id: 1, name: "John Doe", avatar: "/images/default-avatar.png" },
-			{ id: 2, name: "Raja Kilu", avatar: "/images/default-avatar.png" }
-		],
-		totalPeople: 5
-	},
-	{
-		id: 2,
-		topic: "Which framework best for frontend ?",
-		speakers: [
-			{ id: 1, name: "John Doe", avatar: "/images/default-avatar.png" },
-			{ id: 2, name: "Raja Kilu", avatar: "/images/default-avatar.png" }
-		],
-		totalPeople: 8
-	}
-];
-
 const Rooms = () => {
+	const [showModal, setShowModal] = useState(false);
+	const [rooms, setRooms] = useState([]);
+
+	useEffect(() => {
+		const fetchRooms = async () => {
+			const { data } = await getRooms();
+			setRooms(data.rooms);
+		};
+		fetchRooms();
+	}, []);
+
+	function openModal() {
+		setShowModal(true);
+	}
+
 	return (
 		<div className="container">
 			<div className={styles.roomsHeader}>
@@ -36,17 +31,20 @@ const Rooms = () => {
 					</div>
 				</div>
 				<div className={styles.right}>
-					<button className={styles.startRoomButton}>
+					<button onClick={openModal} className={styles.startRoomButton}>
 						<img src="/images/voice.png" width="24" alt="voice" />
 						<span> Start room</span>
 					</button>
 				</div>
 			</div>
+
 			<div className={styles.roomsList}>
 				{rooms.map((room) => (
 					<RoomCard key={room.id} room={room} />
 				))}
 			</div>
+
+			{showModal && <AddRoomModal onClose={() => setShowModal(false)} />}
 		</div>
 	);
 };
