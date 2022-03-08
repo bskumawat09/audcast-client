@@ -6,14 +6,17 @@
 }
 
 .tabButton {
-	width: 60px;
-	height: 40px;
+	width: 48px;
+	height: 56px;
 	background: #262626;
 	border: none;
 	outline: none;
 	border-radius: 10px;
 	cursor: pointer;
 	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .tabButton:last-child {

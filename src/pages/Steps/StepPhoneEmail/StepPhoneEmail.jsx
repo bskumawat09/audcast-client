@@ -21,14 +21,14 @@ const StepPhoneEmail = ({ onNext }) => {
 							tab === "phone" ? styles.active : ""
 						}`}
 						onClick={() => setTab("phone")}>
-						Phone
+						<img src="/images/smartphone.png" alt="phone" />
 					</button>
 					<button
 						className={`${styles.tabButton} ${
 							tab === "email" ? styles.active : ""
 						}`}
 						onClick={() => setTab("email")}>
-						Email
+						<img src="/images/email.png" alt="email" />
 					</button>
 				</div>
 				<TabComponent onNext={onNext} />

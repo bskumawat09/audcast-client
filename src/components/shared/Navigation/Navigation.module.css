@@ -4,3 +4,25 @@
 	align-items: center;
 	justify-content: space-between;
 }
+
+.brandText {
+	color: #c5c4c4;
+}
+
+.logoutButton {
+	background: none;
+	border: none;
+	outline: none;
+}
+
+.navRight {
+	display: flex;
+	align-items: center;
+}
+
+.avatar {
+	border-radius: 50%;
+	object-fit: cover;
+	border: 3px solid #0077ff;
+	margin: 0 10px 0 20px;
+}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Button from "../../../components/shared/Button/Button";
 import Card from "../../../components/shared/Card/Card";
@@ -13,6 +13,7 @@ const StepAvatar = ({ onNext }) => {
 	const [loading, setLoading] = useState(false);
 	const dispatch = useDispatch();
 	const { name, avatar } = useSelector((state) => state.activate);
+	const [unMounted, setUnMounted] = useState(false);
 
 	function captureImage(e) {
 		const file = e.target.files[0];
@@ -33,13 +34,22 @@ const StepAvatar = ({ onNext }) => {
 		try {
 			const { data } = await activate({ name, avatar });
 			console.log(data);
-			dispatch(setAuth(data));
+			if (!unMounted) {
+				dispatch(setAuth(data));
+			}
 		} catch (err) {
 			console.log(err);
 		} finally {
 			setLoading(false);
 		}
 	}
+
+	useEffect(() => {
+		// cleanup function
+		return () => {
+			setUnMounted(true);
+		};
+	}, []);
 
 	if (loading) return <Loader message="Activation in progress" />;
 	return (

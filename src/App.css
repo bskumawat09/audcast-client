@@ -29,6 +29,11 @@ img {
 	height: auto;
 }
 
+button {
+	cursor: pointer;
+	font-weight: bold;
+}
+
 body {
 	background-color: #121212;
 	font-family: "Nunito", sans-serif;
