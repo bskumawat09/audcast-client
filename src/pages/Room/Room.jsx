@@ -8,9 +8,14 @@ import { getRoom } from "../../http";
 const Room = () => {
 	const { id: roomId } = useParams();
 	const user = useSelector((state) => state.auth.user);
-	const { clients, provideRef } = useWebRTC(roomId, user);
+	const { clients, provideRef, handleMute } = useWebRTC(roomId, user);
 	const navigate = useNavigate();
 	const [room, setRoom] = useState(null);
+	const [muted, setMuted] = useState(true);
+
+	useEffect(() => {
+		handleMute(muted, user.id);
+	}, [muted]);
 
 	function handleGoBack() {
 		navigate("/rooms");
@@ -19,11 +24,15 @@ const Room = () => {
 	useEffect(() => {
 		const fetchRoom = async () => {
 			const { data } = await getRoom(roomId);
-			console.log(data);
 			setRoom((prev) => data.room);
 		};
 		fetchRoom();
 	}, [roomId]);
+
+	const handleMuteClick = (clientId) => {
+		if (clientId !== user.id) return;
+		setMuted((prev) => !prev);
+	};
 
 	return (
 		<div>
@@ -62,8 +71,14 @@ const Room = () => {
 										src={client.avatar}
 										alt="avatar"
 									/>
-									<button className={styles.micButton}>
-										<img src="/images/mic.png" alt="mic-icon" />
+									<button
+										onClick={() => handleMuteClick(client.id)}
+										className={styles.micButton}>
+										{client.muted ? (
+											<img src="/images/mic-mute.png" alt="mic-mute-icon" />
+										) : (
+											<img src="/images/mic.png" alt="mic-icon" />
+										)}
 									</button>
 								</div>
 								<h4>{client.name}</h4>
