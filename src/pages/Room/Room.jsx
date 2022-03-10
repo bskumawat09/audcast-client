@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { useWebRTC } from "../../hooks/useWebRTC";
 import { useNavigate, useParams } from "react-router-dom";
