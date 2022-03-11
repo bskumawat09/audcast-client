@@ -8,8 +8,6 @@
 }
 
 .micButton {
-	border: none;
-	outline: none;
 	background: #212121;
 	position: absolute;
 	bottom: 0;
@@ -29,8 +27,6 @@
 }
 
 .goBackButton {
-	border: none;
-	outline: none;
 	background: none;
 	display: flex;
 	align-items: center;
@@ -76,14 +72,7 @@
 	font-weight: bold;
 }
 
-.actionButtonWrapper {
-	display: flex;
-	align-items: center;
-}
-
 .actionButton {
-	border: none;
-	outline: none;
 	background: #262626;
 	margin-left: 2rem;
 	display: flex;

@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// create axios instance
 const api = axios.create({
 	baseURL: process.env.REACT_APP_BASE_URL,
 	withCredentials: true, // to set/send cookie
@@ -25,7 +26,7 @@ api.interceptors.response.use(
 	async (err) => {
 		const originalRequest = err.config;
 		if (
-			err.response.status === 401 &&
+			err.response?.status === 401 &&
 			originalRequest &&
 			!originalRequest.isRetry
 		) {

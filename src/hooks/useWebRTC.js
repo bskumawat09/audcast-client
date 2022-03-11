@@ -6,10 +6,10 @@ import { ACTIONS } from "../actions";
 import freeice from "freeice";
 
 export const useWebRTC = (roomId, user) => {
-	const [clients, setClients] = useStateWithCallback([]);
+	const [clients, setClients] = useStateWithCallback([]); // custom useState() with callback
 
-	const audioElements = useRef({});
-	const connections = useRef({});
+	const audioElements = useRef({}); // "userId" to "audioInstance" mapping
+	const connections = useRef({}); // "socketId" to "RTCPeerConnection" mapping
 	const localMediaStream = useRef(null);
 	const socket = useRef(null);
 	const clientsRef = useRef([]);
@@ -32,18 +32,46 @@ export const useWebRTC = (roomId, user) => {
 		const initChat = async () => {
 			socket.current = socketInit();
 
-			const captureMedia = async () => {
+			await captureMedia();
+
+			addNewClient({ ...user, muted: true }, () => {
+				const localAudioElement = audioElements.current[user.id];
+				if (localAudioElement) {
+					localAudioElement.volume = 0;
+					localAudioElement.srcObject = localMediaStream.current;
+				}
+			});
+
+			socket.current.on(ACTIONS.ADD_PEER, handleAddPeer);
+
+			socket.current.on(ACTIONS.REMOVE_PEER, handleRemovePeer);
+
+			socket.current.on(ACTIONS.ICE_CANDIDATE, handleIceCandidate);
+
+			socket.current.on(ACTIONS.SESSION_DESCRIPTION, setRemoteMedia);
+
+			socket.current.on(ACTIONS.MUTE, ({ userId }) => {
+				handleSetMute(true, userId);
+			});
+
+			socket.current.on(ACTIONS.UNMUTE, ({ userId }) => {
+				handleSetMute(false, userId);
+			});
+
+			socket.current.emit(ACTIONS.JOIN, { roomId, user });
+
+			async function captureMedia() {
 				// start capturing local audio stream
 				localMediaStream.current = await navigator.mediaDevices.getUserMedia({
 					audio: true
 				});
-			};
+			}
 
-			const handleNewPeer = async ({
+			async function handleAddPeer({
 				peerSocketId,
 				createOffer,
 				user: remoteUser
-			}) => {
+			}) {
 				// if peer is already connected
 				if (peerSocketId in connections.current) {
 					return console.warn(
@@ -51,12 +79,12 @@ export const useWebRTC = (roomId, user) => {
 					);
 				}
 
-				// store it in connections
+				// store it in connections object
 				connections.current[peerSocketId] = new RTCPeerConnection({
 					iceServers: freeice()
 				});
 
-				// handle new ice-candidate on this peer connection
+				// handle on-icecandidate on this peer connection
 				connections.current[peerSocketId].onicecandidate = (event) => {
 					socket.current.emit(ACTIONS.RELAY_ICE, {
 						peerSocketId,
@@ -64,7 +92,7 @@ export const useWebRTC = (roomId, user) => {
 					});
 				};
 
-				// handle on-track on this connection
+				// handle on-track on this peer connection
 				connections.current[peerSocketId].ontrack = ({
 					streams: [remoteStream]
 				}) => {
@@ -72,6 +100,7 @@ export const useWebRTC = (roomId, user) => {
 						if (audioElements.current[remoteUser.id]) {
 							audioElements.current[remoteUser.id].srcObject = remoteStream;
 						} else {
+							// there might be delay in rendering audio element, so keeps on repeating the operation
 							let settled = false;
 							const interval = setInterval(() => {
 								if (audioElements.current[remoteUser.id]) {
@@ -107,17 +136,33 @@ export const useWebRTC = (roomId, user) => {
 						sessionDescription: offer
 					});
 				}
-			};
+			}
 
-			const setRemoteMedia = async ({
+			async function handleRemovePeer({ peerSocketId, userId }) {
+				if (connections.current[peerSocketId]) {
+					connections.current[peerSocketId].close();
+				}
+
+				delete connections.current[peerSocketId];
+				delete audioElements.current[peerSocketId];
+				setClients((prev) => prev.filter((client) => client.id !== userId));
+			}
+
+			function handleIceCandidate({ peerSocketId, icecandidate }) {
+				if (icecandidate) {
+					connections.current[peerSocketId].addIceCandidate(icecandidate);
+				}
+			}
+
+			async function setRemoteMedia({
 				peerSocketId,
 				sessionDescription: remoteSessionDescription
-			}) => {
+			}) {
 				connections.current[peerSocketId].setRemoteDescription(
 					new RTCSessionDescription(remoteSessionDescription)
 				);
 
-				// if session description is of type offer then create answer
+				// if session description is of type "offer" then create "answer"
 				if (remoteSessionDescription.type === "offer") {
 					const connection = connections.current[peerSocketId];
 					const answer = await connection.createAnswer();
@@ -129,64 +174,21 @@ export const useWebRTC = (roomId, user) => {
 						sessionDescription: answer
 					});
 				}
-			};
+			}
 
-			const handleRemovePeer = async ({ peerSocketId, userId }) => {
-				if (connections.current[peerSocketId]) {
-					connections.current[peerSocketId].close();
-				}
-
-				delete connections.current[peerSocketId];
-				delete audioElements.current[peerSocketId];
-				setClients((prev) => prev.filter((client) => client.id !== userId));
-			};
-
-			const handleIceCandidate = ({ peerSocketId, icecandidate }) => {
-				if (icecandidate) {
-					connections.current[peerSocketId].addIceCandidate(icecandidate);
-				}
-			};
-
-			const handleSetMute = (mute, userId) => {
+			function handleSetMute(mute, userId) {
 				const clientIndex = clientsRef.current
 					.map((client) => client.id)
 					.indexOf(userId);
 
-				const connectedClients = JSON.parse(JSON.stringify(clientsRef.current)); // make a copy of object
+				// make a copy of clients object
+				const connectedClients = JSON.parse(JSON.stringify(clientsRef.current));
 
 				if (clientIndex > -1) {
 					connectedClients[clientIndex].muted = mute;
 					setClients(connectedClients);
 				}
-			};
-
-			await captureMedia();
-
-			addNewClient({ ...user, muted: true }, () => {
-				const localAudioElement = audioElements.current[user.id];
-				if (localAudioElement) {
-					localAudioElement.volume = 0;
-					localAudioElement.srcObject = localMediaStream.current;
-				}
-			});
-
-			socket.current.on(ACTIONS.ADD_PEER, handleNewPeer);
-
-			socket.current.on(ACTIONS.REMOVE_PEER, handleRemovePeer);
-
-			socket.current.on(ACTIONS.ICE_CANDIDATE, handleIceCandidate);
-
-			socket.current.on(ACTIONS.SESSION_DESCRIPTION, setRemoteMedia);
-
-			socket.current.on(ACTIONS.MUTE, ({ userId }) => {
-				handleSetMute(true, userId);
-			});
-
-			socket.current.on(ACTIONS.UNMUTE, ({ userId }) => {
-				handleSetMute(false, userId);
-			});
-
-			socket.current.emit(ACTIONS.JOIN, { roomId, user });
+			}
 		};
 
 		initChat();
@@ -215,8 +217,8 @@ export const useWebRTC = (roomId, user) => {
 		audioElements.current[userId] = instance;
 	};
 
-	const handleMute = (muted, userId) => {
-		let settled = false;
+	function handleMute(muted, userId) {
+		let settled = false; // flag
 		if (userId === user.id) {
 			const interval = setInterval(() => {
 				if (localMediaStream.current) {
@@ -237,9 +239,9 @@ export const useWebRTC = (roomId, user) => {
 				if (settled) {
 					clearInterval(interval);
 				}
-			}, 200);
+			}, 300);
 		}
-	};
+	}
 
 	return { clients, provideRef, handleMute };
 };

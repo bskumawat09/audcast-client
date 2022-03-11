@@ -6,11 +6,7 @@ const RoomCard = ({ room }) => {
 	const navigate = useNavigate();
 
 	return (
-		<div
-			onClick={() => {
-				navigate(`/rooms/${room.id}`);
-			}}
-			className={styles.card}>
+		<div onClick={() => navigate(`/rooms/${room.id}`)} className={styles.card}>
 			<h3 className={styles.topic}>{room.topic}</h3>
 
 			<div
@@ -27,14 +23,14 @@ const RoomCard = ({ room }) => {
 					{room.speakers.map((speaker) => (
 						<div key={speaker.id} className={styles.nameWrapper}>
 							<span className={styles.name}>{speaker.name}</span>
-							<img src="/images/mic.png" width="16" alt="mic-icon" />
+							<img src="/images/chat.png" width="16" alt="chat-icon" />
 						</div>
 					))}
 				</div>
 			</div>
 
 			<div className={styles.peopleCount}>
-				<span>{room.totalPeople}</span>
+				<span>{room.totalPeoples ? room.totalPeoples : 0}</span>
 				<img src="/images/user.png" width="16" alt="user-icon" />
 			</div>
 		</div>

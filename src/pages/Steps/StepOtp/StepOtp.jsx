@@ -10,17 +10,19 @@ import styles from "./StepOtp.module.css";
 const StepOtp = ({ onNext }) => {
 	const [otp, setOtp] = useState("");
 	const dispatch = useDispatch();
-	// get data from auth slice
-	const { phone, hash } = useSelector((state) => state.auth.otp);
+	const { phone, hash } = useSelector((state) => state.auth.otp); // get data from auth slice
 
 	async function submit() {
-		if (!otp || !phone || !hash) return;
+		if (!otp || !phone || !hash) {
+			console.log("otp is required");
+			return;
+		}
 
 		try {
 			const { data } = await verifyOtp({ otp, phone, hash });
 			console.log(data);
 			dispatch(setAuth(data));
-			// onNext(); no need to call onNext() because protected route will handle redirecting to /activate route
+			// onNext(); no need to call onNext() because our protected routes will handle redirecting to "/activate"
 		} catch (err) {
 			console.log(err);
 		}
@@ -28,7 +30,7 @@ const StepOtp = ({ onNext }) => {
 
 	return (
 		<div className="cardWrapper">
-			<Card title="Enter the OTP sent on your phone" icon="wink-emoji-logo.png">
+			<Card title="Enter the OTP sent on your phone" icon="party-emoji.png">
 				<TextInput value={otp} onChange={(e) => setOtp(e.target.value)} />
 				<div>
 					<div className={styles.actionButtonWrapper}>

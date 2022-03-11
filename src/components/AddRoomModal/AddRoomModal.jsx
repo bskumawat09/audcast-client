@@ -10,11 +10,13 @@ const AddRoomModal = ({ onClose }) => {
 	const navigate = useNavigate();
 
 	async function createRoom() {
-		try {
-			if (!topic) return;
+		if (!topic) {
+			console.log("topic is required");
+			return;
+		}
 
+		try {
 			const { data } = await create({ topic, roomType });
-			console.log(data);
 			navigate(`/rooms/${data.room.id}`);
 		} catch (err) {
 			console.log(err);

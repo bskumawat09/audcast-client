@@ -9,7 +9,7 @@ import Loader from "../../../components/shared/Loader/Loader";
 import styles from "./StepAvatar.module.css";
 
 const StepAvatar = ({ onNext }) => {
-	const [image, setImage] = useState("/images/default-avatar.png");
+	const [image, setImage] = useState("/images/monkey-avatar.png");
 	const [loading, setLoading] = useState(false);
 	const dispatch = useDispatch();
 	const { name, avatar } = useSelector((state) => state.activate);
@@ -28,12 +28,14 @@ const StepAvatar = ({ onNext }) => {
 	}
 
 	async function submit() {
-		if (!name || !avatar) return;
+		if (!name || !avatar) {
+			console.log("name and avatar are required");
+			return;
+		}
 
 		setLoading(true);
 		try {
 			const { data } = await activate({ name, avatar });
-			console.log(data);
 			if (!unMounted) {
 				dispatch(setAuth(data));
 			}
@@ -51,14 +53,16 @@ const StepAvatar = ({ onNext }) => {
 		};
 	}, []);
 
-	if (loading) return <Loader message="Activation in progress" />;
+	if (loading) return <Loader message="Activation in progress..." />;
 	return (
 		<div className="cardWrapper">
-			<Card title={`Hello, ${name}`} icon="wink-emoji-logo.png">
+			<Card title={`Hello, ${name}`} icon="party-emoji.png">
 				<p className={styles.subHeading}>How's is this photo?</p>
+
 				<div className={styles.avatarWrapper}>
 					<img className={styles.avatar} src={image} alt="avatar" />
 				</div>
+
 				<div>
 					<input
 						onChange={captureImage}
@@ -70,6 +74,7 @@ const StepAvatar = ({ onNext }) => {
 						Choose different photo
 					</label>
 				</div>
+
 				<div className={styles.actionButtonWrapper}>
 					<Button onClick={submit} text="Next" />
 				</div>

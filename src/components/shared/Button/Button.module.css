@@ -1,8 +1,6 @@
 .button {
 	background: #0077ff;
 	padding: 10px 20px;
-	border: none;
-	outline: none;
 	display: flex;
 	align-items: center;
 	margin: 0 auto;

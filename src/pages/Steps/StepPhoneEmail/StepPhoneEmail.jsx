@@ -23,6 +23,7 @@ const StepPhoneEmail = ({ onNext }) => {
 						onClick={() => setTab("phone")}>
 						<img src="/images/smartphone.png" alt="phone" />
 					</button>
+
 					<button
 						className={`${styles.tabButton} ${
 							tab === "email" ? styles.active : ""

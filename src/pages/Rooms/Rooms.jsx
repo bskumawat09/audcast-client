@@ -30,6 +30,7 @@ const Rooms = () => {
 						<input type="text" className={styles.searchInput} />
 					</div>
 				</div>
+
 				<div className={styles.right}>
 					<button onClick={openModal} className={styles.startRoomButton}>
 						<img src="/images/voice.png" width="24" alt="voice" />

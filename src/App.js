@@ -86,14 +86,6 @@ const SemiProtectedRoute = ({ children }) => {
 		// if user is logged-in as well as activated
 		return <Navigate to="/rooms" />;
 	}
-
-	// return !isAuth ? (
-	// 	<Navigate to="/" />
-	// ) : isAuth && !user.activated ? (
-	// 	children
-	// ) : (
-	// 	<Navigate to="/rooms" />
-	// );
 };
 
 const ProtectedRoute = ({ children }) => {

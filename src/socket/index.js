@@ -8,7 +8,7 @@ const socketInit = () => {
 		transports: ["websocket"]
 	};
 
-	return io("http://localhost:5000", options);
+	return io(process.env.REACT_APP_BASE_URL, options);
 };
 
 export default socketInit;

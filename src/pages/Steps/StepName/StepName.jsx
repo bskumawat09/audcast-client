@@ -13,6 +13,7 @@ const StepName = ({ onNext }) => {
 
 	function nextStep() {
 		if (!fullName) {
+			console.log("full name required");
 			return;
 		}
 		dispatch(setName(fullName));
@@ -21,7 +22,7 @@ const StepName = ({ onNext }) => {
 
 	return (
 		<div className="cardWrapper">
-			<Card title="Enter your full name" icon="wink-emoji-logo.png">
+			<Card title="Enter your full name" icon="party-emoji.png">
 				<TextInput
 					value={fullName}
 					onChange={(e) => setFullName(e.target.value)}

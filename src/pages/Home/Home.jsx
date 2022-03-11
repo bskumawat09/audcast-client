@@ -6,18 +6,19 @@ import styles from "./Home.module.css";
 
 const Home = () => {
 	const navigate = useNavigate();
+
 	function startRegister() {
 		navigate("/authenticate");
 	}
 
 	return (
 		<div className="cardWrapper">
-			<Card title="Welcome to CodersHouse!" icon="wink-emoji-logo.png">
+			<Card title="Welcome to Audcast !" icon="party-emoji.png">
 				<p className={styles.text}>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Est
 					consequatur nisi eos perspiciatis quisquam illum voluptate adipisci
-					dicta fugiat. Voluptatibus tenetur accusamus magnam quidem neque
-					numquam laborum, alias culpa recusandae.
+					dicta fugiat. Voluptatibus tenetur quidem neque numquam laborum, alias
+					culpa.
 				</p>
 				<div>
 					<Button text="Let's Go" onClick={startRegister} />

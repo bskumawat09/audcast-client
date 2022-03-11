@@ -46,8 +46,6 @@
 }
 
 .startRoomButton {
-	border: none;
-	outline: none;
 	display: flex;
 	align-items: center;
 	background: #20bd5f;

@@ -19,8 +19,6 @@
 }
 
 .closeButton {
-	border: none;
-	outline: none;
 	position: absolute;
 	right: 3px;
 	top: 8px;
@@ -73,8 +71,6 @@
 }
 
 .footerButton {
-	border: none;
-	outline: none;
 	background: #20bd5f;
 	color: #fff;
 	display: flex;

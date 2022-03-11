@@ -12,16 +12,22 @@ const Phone = ({ onNext }) => {
 	const dispatch = useDispatch();
 
 	async function submit() {
-		if (!phoneNumber) return;
+		if (!phoneNumber) {
+			console.log("phone number is required");
+			return;
+		}
 
-		const { data } = await sendOtp({ phone: phoneNumber }); // api request
-		console.log(data);
-		dispatch(setOtp({ phone: data.phone, hash: data.hash }));
-		onNext();
+		try {
+			const { data } = await sendOtp({ phone: phoneNumber }); // api request
+			dispatch(setOtp({ phone: data.phone, hash: data.hash }));
+			onNext();
+		} catch (err) {
+			console.log(err);
+		}
 	}
 
 	return (
-		<Card title="Enter your phone number" icon="wink-emoji-logo.png">
+		<Card title="Enter your phone number" icon="party-emoji.png">
 			<TextInput
 				value={phoneNumber}
 				onChange={(e) => setPhoneNumber(e.target.value)}
