@@ -4,7 +4,7 @@
 	right: 0;
 	bottom: 0;
 	left: 0;
-	background: rgba(0, 0, 0, 0.6);
+	background: rgba(0, 0, 0, 0.7);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -12,46 +12,61 @@
 
 .modalBody {
 	width: 50%;
+	min-width: 300px;
 	max-width: 500px;
 	background: #1d1d1d;
-	border-radius: 20px;
+	border-radius: 1.25em;
 	position: relative;
 }
 
 .closeButton {
 	position: absolute;
-	right: 3px;
-	top: 8px;
+	right: 5px;
+	top: 5px;
 	background: none;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0.5em;
+	transition: all 0.3s ease-in-out;
+}
+
+.closeButton img {
+	width: 1em;
+}
+
+.closeButton:hover {
+	background: #262626;
 }
 
 .modalHeader {
-	padding: 30px;
+	padding: 1.875em;
 	border-bottom: 2px solid #262626;
 }
 
 .heading {
-	margin-bottom: 5px;
+	margin-bottom: 0.3125em;
 }
 
 .subHeading {
-	font-size: 18px;
-	margin: 10px 0;
+	font-size: 1.125rem;
+	margin: 0.625em 0;
 	font-weight: bold;
 }
 
 .roomTypes {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	gap: 30px;
+	gap: 1.875em;
 }
 
 .typeBox {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 10px;
-	border-radius: 10px;
+	padding: 0.625em;
+	border-radius: 0.625em;
 	cursor: pointer;
 }
 
@@ -60,14 +75,14 @@
 }
 
 .modalFooter {
-	padding: 30px;
+	padding: 1.875em;
 	text-align: center;
 }
 
 .modalFooter h3 {
-	font-size: 20px;
+	font-size: 1.25rem;
 	font-weight: bold;
-	margin-bottom: 20px;
+	margin-bottom: 1.25em;
 }
 
 .footerButton {
@@ -81,6 +96,10 @@
 	border-radius: 20px;
 	margin: 0 auto;
 	transition: all 0.3s ease-in-out;
+}
+
+.footerButton img {
+	width: 1.5em;
 }
 
 .footerButton:hover {

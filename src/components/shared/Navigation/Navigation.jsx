@@ -11,14 +11,14 @@ const Navigation = () => {
 		color: "#fff",
 		textDecoration: "none",
 		fontWeight: "bold",
-		fontSize: "22px",
+		fontSize: "1.375rem",
 		display: "flex",
 		alignItems: "center"
 	};
 
 	const brandLogo = {
-		width: "36px",
-		marginRight: "10px"
+		width: "2.25rem",
+		marginRight: "0.625rem"
 	};
 
 	const dispatch = useDispatch();
@@ -46,14 +46,12 @@ const Navigation = () => {
 						<img
 							className={styles.avatar}
 							src={user.avatar ? user.avatar : "/images/default-avatar.png"}
-							width="40"
-							height="40"
 							alt="avatar"
 						/>
 					</Link>
 
 					<button className={styles.logoutButton} onClick={logoutUser}>
-						<img src="/images/logout-btn.png" width="24" alt="logout" />
+						<img src="/images/logout-btn.png" alt="logout" />
 					</button>
 				</div>
 			)}

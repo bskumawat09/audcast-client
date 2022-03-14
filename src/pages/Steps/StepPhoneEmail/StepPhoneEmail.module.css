@@ -1,15 +1,19 @@
+.wrapper {
+	max-width: 100%;
+}
+
 .buttonWrapper {
-	margin-bottom: 20px;
+	margin-bottom: 1.25em;
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
 }
 
 .tabButton {
-	width: 48px;
-	height: 56px;
+	width: 3rem;
+	height: 3.5rem;
 	background: #262626;
-	border-radius: 10px;
+	border-radius: 0.625em;
 	cursor: pointer;
 	color: #fff;
 	display: flex;
@@ -18,7 +22,7 @@
 }
 
 .tabButton:last-child {
-	margin-left: 20px;
+	margin-left: 1.25em;
 }
 
 .active {
@@ -26,13 +30,13 @@
 }
 
 .actionButtonWrapper {
-	margin-top: 40px;
+	margin-top: 2.5em;
 }
 
 .bottomParagraph {
 	color: #c4c5c5;
 	width: 70%;
 	margin: 0 auto;
-	margin-top: 20px;
+	margin-top: 1.25em;
 	text-align: center;
 }

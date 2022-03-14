@@ -20,7 +20,6 @@ const StepOtp = ({ onNext }) => {
 
 		try {
 			const { data } = await verifyOtp({ otp, phone, hash });
-			console.log(data);
 			dispatch(setAuth(data));
 			// onNext(); no need to call onNext() because our protected routes will handle redirecting to "/activate"
 		} catch (err) {

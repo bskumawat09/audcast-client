@@ -1,10 +1,10 @@
 .card {
 	width: 500px;
-	/* max-width: 90%; */
+	max-width: 100%;
 	min-height: 300px;
 	background-color: #1d1d1d;
-	padding: 30px;
-	border-radius: 20px;
+	padding: 1.875em;
+	border-radius: 1.25em;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -15,10 +15,15 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin-bottom: 30px;
+	margin-bottom: 1.875em;
+}
+
+.headingWrapper img {
+	width: 32px;
+	margin-right: 0.625em;
 }
 
 .heading {
-	font-size: 22px;
+	font-size: 1.375rem;
 	font-weight: bold;
 }

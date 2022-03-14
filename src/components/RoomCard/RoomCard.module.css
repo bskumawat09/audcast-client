@@ -1,20 +1,27 @@
 .card {
 	background: #1d1d1d;
-	padding: 20px;
-	border-radius: 10px;
+	padding: 1.25em;
+	border-radius: 0.625em;
 	cursor: pointer;
+	position: relative;
+	box-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
+	transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+	background: #1b1b1b;
 }
 
 .speakers {
 	display: flex;
 	align-items: center;
 	position: relative;
-	margin: 20px 0;
+	margin: 1.25em 0;
 }
 
 .avatars img {
-	width: 40px;
-	height: 40px;
+	width: 2.5rem;
+	height: 2.5rem;
 	border-radius: 50%;
 	object-fit: cover;
 	border: 2px solid #20bd5f;
@@ -25,8 +32,8 @@
 }
 
 .avatars img:last-child {
-	top: 20px;
-	left: 20px;
+	top: 1.25em;
+	left: 1.25em;
 }
 
 .nameWrapper {
@@ -34,14 +41,19 @@
 	align-items: center;
 }
 
+/* chat icon */
+.nameWrapper img {
+	width: 1rem;
+}
+
 .names {
-	margin-left: 100px;
+	margin-left: 5.5em;
 }
 
 .names span {
 	display: inline-block;
-	padding-bottom: 5px;
-	margin-right: 5px;
+	padding-bottom: 0.3125em;
+	margin-right: 0.3125em;
 }
 
 .peopleCount {
@@ -50,7 +62,7 @@
 
 .peopleCount span {
 	font-weight: bold;
-	margin-right: 5px;
+	margin-right: 0.3125em;
 }
 
 .singleSpeaker .avatars img {
@@ -58,5 +70,44 @@
 }
 
 .singleSpeaker .names {
-	margin-left: 20px;
+	margin-left: 1.25em;
+}
+
+.footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.footer .roomType {
+	text-transform: capitalize;
+	color: #c4c5c5;
+	font-weight: bold;
+}
+
+.deleteButton {
+	visibility: hidden;
+	position: absolute;
+	top: 0.5em;
+	right: 0.5em;
+	background: #333;
+	border-radius: 50%;
+	padding: 0.5em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.3s ease-in-out;
+}
+
+/* delete icon */
+.deleteButton img {
+	width: 1.25rem;
+}
+
+.deleteButton:hover {
+	background: #e23944;
+}
+
+.owner {
+	visibility: visible;
 }

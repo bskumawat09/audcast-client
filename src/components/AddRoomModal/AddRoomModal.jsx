@@ -27,14 +27,14 @@ const AddRoomModal = ({ onClose }) => {
 		<div className={styles.modalMask}>
 			<div className={styles.modalBody}>
 				<button onClick={onClose} className={styles.closeButton}>
-					<img src="/images/close.png" width="16" alt="close-icon" />
+					<img src="/images/close.png" alt="close icon" />
 				</button>
 
 				<div className={styles.modalHeader}>
 					<h3 className={styles.heading}>Enter the topic to be discussed</h3>
 
 					<TextInput
-						fullWidth="true"
+						fullwidth="true"
 						value={topic}
 						onChange={(e) => setTopic(e.target.value)}
 					/>
@@ -46,7 +46,7 @@ const AddRoomModal = ({ onClose }) => {
 							className={`${styles.typeBox} ${
 								roomType === "open" ? styles.active : ""
 							}`}>
-							<img src="/images/globe.png" alt="globe-icon" />
+							<img src="/images/globe.png" alt="globe icon" />
 							<span>Open</span>
 						</div>
 						<div
@@ -54,7 +54,7 @@ const AddRoomModal = ({ onClose }) => {
 							className={`${styles.typeBox} ${
 								roomType === "social" ? styles.active : ""
 							}`}>
-							<img src="/images/group.png" alt="group-icon" />
+							<img src="/images/group.png" alt="group icon" />
 							<span>Social</span>
 						</div>
 						<div
@@ -62,7 +62,7 @@ const AddRoomModal = ({ onClose }) => {
 							className={`${styles.typeBox} ${
 								roomType === "private" ? styles.active : ""
 							}`}>
-							<img src="/images/padlock.png" alt="padlock-icon" />
+							<img src="/images/padlock.png" alt="padlock icon" />
 							<span>Private</span>
 						</div>
 					</div>
@@ -71,7 +71,7 @@ const AddRoomModal = ({ onClose }) => {
 				<div className={styles.modalFooter}>
 					<h3>Start a room, open to everyone</h3>
 					<button onClick={createRoom} className={styles.footerButton}>
-						<img src="/images/voice.png" width="24" alt="voice-icon" />
+						<img src="/images/voice.png" alt="voice icon" />
 						<span>Let's go</span>
 					</button>
 				</div>

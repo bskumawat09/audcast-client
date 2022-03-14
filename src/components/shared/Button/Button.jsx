@@ -8,7 +8,7 @@ const Button = ({ text, onClick }) => {
 			<img
 				className={styles.arrow}
 				src="/images/right-arrow.png"
-				alt="arrow-icon"
+				alt="right arrow"
 			/>
 		</button>
 	);

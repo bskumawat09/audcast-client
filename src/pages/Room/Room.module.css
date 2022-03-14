@@ -12,11 +12,11 @@
 	position: absolute;
 	bottom: 0;
 	right: 0;
-	width: 30px;
-	height: 30px;
+	width: 1.875rem;
+	height: 1.875rem;
 	box-sizing: content-box;
 	border-radius: 50%;
-	padding: 5px;
+	padding: 0.3125em;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -30,14 +30,14 @@
 	background: none;
 	display: flex;
 	align-items: center;
-	margin-top: 2rem;
+	margin-top: 2em;
 }
 
 .goBackButton span {
 	font-weight: bold;
 	color: #fff;
-	font-size: 16px;
-	margin-left: 1rem;
+	font-size: 1rem;
+	margin-left: 1em;
 	position: relative;
 }
 
@@ -54,10 +54,10 @@
 
 .clientsWrapper {
 	background: #1d1d1d;
-	margin-top: 4rem;
+	margin-top: 4em;
 	border-top-left-radius: 20px;
 	border-top-right-radius: 20px;
-	min-height: calc(100vh - 205px);
+	min-height: calc(100vh - 12.5em);
 	padding: 2rem;
 }
 
@@ -68,19 +68,19 @@
 }
 
 .topic {
-	font-size: 18px;
+	font-size: 1.125rem;
 	font-weight: bold;
 }
 
 .actionButton {
 	background: #262626;
-	margin-left: 2rem;
+	margin-left: 2em;
 	display: flex;
 	align-items: center;
-	padding: 0.7rem 1rem;
-	border-radius: 20px;
+	padding: 0.7em 1em;
+	border-radius: 1.25em;
 	color: #fff;
-	transition: all 0.3 ease-in-out;
+	transition: all 0.3s ease-in-out;
 }
 
 .actionButton:hover {
@@ -89,11 +89,11 @@
 
 .actionButton span {
 	font-weight: bold;
-	margin-left: 1rem;
+	margin-left: 0.625em;
 }
 
 .clientsList {
-	margin-top: 2rem;
+	margin-top: 2em;
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
@@ -108,5 +108,12 @@
 
 .client h4 {
 	font-weight: bold;
-	margin-top: 1rem;
+	margin-top: 1em;
+}
+
+@media screen and (max-width: 480px) {
+	.userHead {
+		width: 80px;
+		height: 80px;
+	}
 }

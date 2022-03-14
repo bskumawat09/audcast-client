@@ -55,5 +55,12 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin-top: 6rem;
+	max-width: 90%;
+	margin: 6em auto 0 auto;
+}
+
+@media screen and (max-width: 480px) {
+	html {
+		font-size: 12px;
+	}
 }

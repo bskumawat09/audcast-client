@@ -39,7 +39,7 @@ const Room = () => {
 		<div>
 			<div className="container">
 				<button onClick={handleGoBack} className={styles.goBackButton}>
-					<img src="/images/left-arrow.png" alt="left-arrow" />
+					<img src="/images/left-arrow.png" alt="left arrow icon" />
 					<span>All voice rooms</span>
 				</button>
 			</div>
@@ -49,8 +49,8 @@ const Room = () => {
 					<h2 className={styles.topic}>{room?.topic}</h2>
 
 					<button onClick={handleGoBack} className={styles.actionButton}>
-						<img src="/images/win.png" alt="win-icon" />
-						<span>Leave quitely</span>
+						<img src="/images/win.png" alt="win icon" />
+						<span>Leave</span>
 					</button>
 				</div>
 
@@ -71,9 +71,9 @@ const Room = () => {
 										onClick={() => handleMuteClick(client.id)}
 										className={styles.micButton}>
 										{client.muted ? (
-											<img src="/images/mic-mute.png" alt="mic-mute-icon" />
+											<img src="/images/mic-mute.png" alt="mic mute icon" />
 										) : (
-											<img src="/images/mic.png" alt="mic-icon" />
+											<img src="/images/mic.png" alt="mic icon" />
 										)}
 									</button>
 								</div>
