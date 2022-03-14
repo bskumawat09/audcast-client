@@ -2,7 +2,7 @@ import axios from "axios";
 
 // create axios instance
 const api = axios.create({
-	baseURL: "https://audcast.herokuapp.com",
+	baseURL: process.env.REACT_APP_SERVER_URL,
 	withCredentials: true, // to set/send cookie
 	headers: {
 		"Content-type": "application/json",
@@ -34,7 +34,7 @@ api.interceptors.response.use(
 		) {
 			originalRequest.isRetry = true;
 			try {
-				await axios.get(`${process.env.REACT_APP_BASE_URL}/api/refresh`, {
+				await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/refresh`, {
 					withCredentials: true
 				});
 

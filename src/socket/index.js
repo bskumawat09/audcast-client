@@ -2,14 +2,13 @@ import { io } from "socket.io-client";
 
 const socketInit = () => {
 	const options = {
-		withCredentials: true,
 		"force new connection": true,
 		reconnectionAttempt: "Infinity",
 		timeout: 10000,
 		transports: ["websocket"]
 	};
 
-	return io("https://audcast.herokuapp.com", options);
+	return io(process.env.REACT_APP_SERVER_URL, options);
 };
 
 export default socketInit;
