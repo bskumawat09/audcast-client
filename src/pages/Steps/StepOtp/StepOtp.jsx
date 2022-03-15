@@ -6,13 +6,11 @@ import TextInput from "../../../components/shared/TextInput/TextInput";
 import { verifyOtp } from "../../../http";
 import { setAuth } from "../../../store/authSlice";
 import styles from "./StepOtp.module.css";
-import Cookies from "universal-cookie";
 
 const StepOtp = ({ onNext }) => {
 	const [otp, setOtp] = useState("");
 	const dispatch = useDispatch();
 	const { phone, hash } = useSelector((state) => state.auth.otp); // get data from auth slice
-	const cookies = new Cookies();
 
 	async function submit() {
 		if (!otp || !phone || !hash) {
@@ -22,13 +20,6 @@ const StepOtp = ({ onNext }) => {
 
 		try {
 			const { data } = await verifyOtp({ otp, phone, hash });
-			// store tokens in cookie
-			cookies.set("refreshToken", data.tokens.refreshToken, {
-				maxAge: 5 * 24 * 60 * 60 * 1000
-			});
-			cookies.set("accessToken", data.tokens.accessToken, {
-				maxAge: 5 * 60 * 1000
-			});
 			dispatch(setAuth(data));
 			// onNext(); no need to call onNext() because our protected routes will handle redirecting to "/activate"
 		} catch (err) {

@@ -1,6 +1,4 @@
 import axios from "axios";
-import Cookies from "universal-cookie";
-const cookies = new Cookies();
 
 axios.defaults.withCredentials = true;
 // create axios instance
@@ -36,17 +34,7 @@ api.interceptors.response.use(
 		) {
 			originalRequest.isRetry = true;
 			try {
-				const { data } = await axios.get(
-					`${process.env.REACT_APP_SERVER_URL}/api/refresh`
-				);
-				// store tokens in cookie
-				cookies.set("refreshToken", data.tokens.refreshToken, {
-					maxAge: 5 * 24 * 60 * 60 * 1000
-				});
-				cookies.set("accessToken", data.tokens.accessToken, {
-					maxAge: 1 * 60 * 1000
-				});
-
+				await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/refresh`);
 				return api.request(originalRequest);
 			} catch (error) {
 				console.log(error.message);
