@@ -2,10 +2,10 @@ import axios from "axios";
 import Cookies from "universal-cookie";
 const cookies = new Cookies();
 
+axios.defaults.withCredentials = true;
 // create axios instance
 const api = axios.create({
 	baseURL: process.env.REACT_APP_SERVER_URL,
-	withCredentials: true, // to send cookies with request
 	headers: {
 		"Content-type": "application/json",
 		Accept: "application/json"
@@ -37,10 +37,7 @@ api.interceptors.response.use(
 			originalRequest.isRetry = true;
 			try {
 				const { data } = await axios.get(
-					`${process.env.REACT_APP_SERVER_URL}/api/refresh`,
-					{
-						withCredentials: true
-					}
+					`${process.env.REACT_APP_SERVER_URL}/api/refresh`
 				);
 				// store tokens in cookie
 				cookies.set("refreshToken", data.tokens.refreshToken, {
