@@ -56,11 +56,12 @@ body {
 	align-items: center;
 	justify-content: center;
 	max-width: 90%;
-	margin: 6em auto 0 auto;
+	margin: 3em auto 3em auto;
+	/* min-height: calc(100vh - 4.75em); */
 }
 
 @media screen and (max-width: 480px) {
 	html {
-		font-size: 12px;
+		font-size: 14px;
 	}
 }

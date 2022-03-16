@@ -11,14 +11,14 @@ const Navigation = () => {
 		color: "#fff",
 		textDecoration: "none",
 		fontWeight: "bold",
-		fontSize: "1.375rem",
+		fontSize: "1.25rem",
 		display: "flex",
 		alignItems: "center"
 	};
 
 	const brandLogo = {
-		width: "2.25rem",
-		marginRight: "0.625rem"
+		width: "2rem",
+		marginRight: "0.625em"
 	};
 
 	const dispatch = useDispatch();
@@ -41,7 +41,7 @@ const Navigation = () => {
 			</Link>
 			{isAuth && (
 				<div className={styles.navRight}>
-					<h3>{user?.name}</h3>
+					<h4>{user?.name}</h4>
 					<Link to="/">
 						<img
 							className={styles.avatar}

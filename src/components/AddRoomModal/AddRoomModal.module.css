@@ -12,10 +12,14 @@
 
 .modalBody {
 	width: 50%;
-	min-width: 300px;
+	min-width: 320px;
 	max-width: 500px;
+	min-height: 380px;
 	background: #1d1d1d;
 	border-radius: 1.25em;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	position: relative;
 }
 

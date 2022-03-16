@@ -1,10 +1,26 @@
 .input {
 	border: none;
 	background: #323232;
+	width: 15em;
 	font-size: 1.125rem;
 	padding: 0.625em 1.25em;
-	width: 200px;
 	color: #fff;
 	border-radius: 0.625em;
 	outline: none;
+}
+
+.errorMessage {
+	display: none;
+	color: rgb(238, 69, 69);
+	margin-top: 1em;
+	font-size: 0.875rem;
+	width: 15em;
+}
+
+.input:invalid[focused="true"] {
+	border: 2px solid rgb(238, 69, 69);
+}
+
+.input:invalid[focused="true"] ~ .errorMessage {
+	display: block;
 }

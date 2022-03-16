@@ -33,6 +33,9 @@ const Phone = ({ onNext }) => {
 				value={phoneNumber}
 				onChange={(e) => setPhoneNumber(e.target.value)}
 				placeholder="+919876543210"
+				required={true}
+				pattern="^(\+91)[6-9]\d{9}$"
+				errorMessage="Phone number must start with +91 followed by 10 digits"
 			/>
 			<div>
 				<div className={styles.actionButtonWrapper}>
@@ -40,7 +43,7 @@ const Phone = ({ onNext }) => {
 				</div>
 				<p className={styles.bottomParagraph}>
 					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore
-					aliquam fugiat enim molestiae.
+					aliquam fugiat.
 				</p>
 			</div>
 		</Card>

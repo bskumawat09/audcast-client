@@ -33,14 +33,16 @@ const Email = ({ onNext }) => {
 				placeholder="example@gmail.com"
 				value={email}
 				onChange={(e) => setEmail(e.target.value)}
+				required={true}
+				errorMessage="Enter valid email address"
 			/>
 			<div>
 				<div className={styles.actionButtonWrapper}>
 					<Button onClick={submit} text="Next" />
 				</div>
 				<p className={styles.bottomParagraph}>
-					Dolore officia quos facere at molestiae dolorem. Tempora sed
-					reiciendis quos rem magni necessitatibus placeat saepe quasi facere.
+					Dolore officia quos facere at molestiae dolorem. Tempora sed magni
+					placeat saepe quasi facere.
 				</p>
 			</div>
 		</Card>

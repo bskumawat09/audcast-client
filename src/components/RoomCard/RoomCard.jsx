@@ -28,13 +28,13 @@ const RoomCard = ({ room, setRooms }) => {
 				}`}>
 				<div className={styles.avatars}>
 					{room.speakers.map((speaker) => (
-						<img key={speaker.id} src={speaker.avatar} alt="avatar" />
+						<img key={speaker._id} src={speaker.avatar} alt="avatar" />
 					))}
 				</div>
 
 				<div className={styles.names}>
 					{room.speakers.map((speaker) => (
-						<div key={speaker.id} className={styles.nameWrapper}>
+						<div key={speaker._id} className={styles.nameWrapper}>
 							<span className={styles.name}>{speaker.name}</span>
 							<img src="/images/chat.png" alt="chat icon" />
 						</div>
