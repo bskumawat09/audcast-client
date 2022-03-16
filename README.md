@@ -1,4 +1,13 @@
-# Getting Started with Create React App
+# Audcast - The Audio Podcast
+
+> It is a Real-time Audio Podcast platform made using React.js and WebRTC.
+
+## Test Account
+
+Phone No. : +919876765454
+Default OTP : 97979
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

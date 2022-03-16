@@ -33,7 +33,7 @@ const StepOtp = ({ onNext }) => {
 				<TextInput
 					value={otp}
 					onChange={(e) => setOtp(e.target.value)}
-					placeholder="00000"
+					placeholder="97979"
 				/>
 				<div>
 					<div className={styles.actionButtonWrapper}>

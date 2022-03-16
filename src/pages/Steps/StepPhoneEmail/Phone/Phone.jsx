@@ -32,7 +32,7 @@ const Phone = ({ onNext }) => {
 				type="tel"
 				value={phoneNumber}
 				onChange={(e) => setPhoneNumber(e.target.value)}
-				placeholder="+919876765454"
+				placeholder="+919876543210"
 			/>
 			<div>
 				<div className={styles.actionButtonWrapper}>
