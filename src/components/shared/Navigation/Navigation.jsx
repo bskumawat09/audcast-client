@@ -45,7 +45,7 @@ const Navigation = () => {
 					<Link to="/">
 						<img
 							className={styles.avatar}
-							src={user.avatar ? user.avatar : "/images/default-avatar.png"}
+							src={user.avatar ? user.avatar : "/images/monkey-avatar.png"}
 							alt="avatar"
 						/>
 					</Link>

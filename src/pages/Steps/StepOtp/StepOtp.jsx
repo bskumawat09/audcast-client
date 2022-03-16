@@ -30,7 +30,11 @@ const StepOtp = ({ onNext }) => {
 	return (
 		<div className="cardWrapper">
 			<Card title="Enter the OTP sent on your phone" icon="party-emoji.png">
-				<TextInput value={otp} onChange={(e) => setOtp(e.target.value)} />
+				<TextInput
+					value={otp}
+					onChange={(e) => setOtp(e.target.value)}
+					placeholder="00000"
+				/>
 				<div>
 					<div className={styles.actionButtonWrapper}>
 						<Button onClick={submit} text="Next" />

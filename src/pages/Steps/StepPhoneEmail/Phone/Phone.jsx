@@ -29,8 +29,10 @@ const Phone = ({ onNext }) => {
 	return (
 		<Card title="Enter your phone number" icon="party-emoji.png">
 			<TextInput
+				type="tel"
 				value={phoneNumber}
 				onChange={(e) => setPhoneNumber(e.target.value)}
+				placeholder="+919876765454"
 			/>
 			<div>
 				<div className={styles.actionButtonWrapper}>

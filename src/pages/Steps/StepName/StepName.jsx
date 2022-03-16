@@ -24,6 +24,7 @@ const StepName = ({ onNext }) => {
 		<div className="cardWrapper">
 			<Card title="Enter your full name" icon="party-emoji.png">
 				<TextInput
+					type="text"
 					value={fullName}
 					onChange={(e) => setFullName(e.target.value)}
 				/>

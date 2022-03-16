@@ -47,12 +47,15 @@
 
 .heading {
 	margin-bottom: 0.3125em;
+	color: #c4c5c5;
+	font-weight: bold;
 }
 
 .subHeading {
 	font-size: 1.125rem;
 	margin: 0.625em 0;
 	font-weight: bold;
+	color: #c4c5c5;
 }
 
 .roomTypes {
@@ -81,7 +84,6 @@
 
 .modalFooter h3 {
 	font-size: 1.25rem;
-	font-weight: bold;
 	margin-bottom: 1.25em;
 }
 
@@ -91,9 +93,9 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 200px;
-	padding: 7px 10px;
-	border-radius: 20px;
+	width: 12.5em;
+	padding: 0.5em 0.625em;
+	border-radius: 1.25em;
 	margin: 0 auto;
 	transition: all 0.3s ease-in-out;
 }
@@ -107,5 +109,5 @@
 }
 
 .footerButton span {
-	margin-left: 5px;
+	margin-left: 0.3125em;
 }

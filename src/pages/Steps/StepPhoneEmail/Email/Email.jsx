@@ -28,7 +28,12 @@ const Email = ({ onNext }) => {
 
 	return (
 		<Card title="Enter your email" icon="party-emoji.png">
-			<TextInput value={email} onChange={(e) => setEmail(e.target.value)} />
+			<TextInput
+				type="email"
+				placeholder="example@gmail.com"
+				value={email}
+				onChange={(e) => setEmail(e.target.value)}
+			/>
 			<div>
 				<div className={styles.actionButtonWrapper}>
 					<Button onClick={submit} text="Next" />
