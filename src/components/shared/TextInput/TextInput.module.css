@@ -11,14 +11,14 @@
 
 .errorMessage {
 	display: none;
-	color: rgb(238, 69, 69);
+	color: #e23944;
 	margin-top: 1em;
 	font-size: 0.875rem;
 	width: 15em;
 }
 
 .input:invalid[focused="true"] {
-	border: 2px solid rgb(238, 69, 69);
+	border: 2px solid #e23944;
 }
 
 .input:invalid[focused="true"] ~ .errorMessage {

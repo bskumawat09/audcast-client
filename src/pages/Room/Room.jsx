@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import styles from "./Room.module.css";
 import { getRoom } from "../../http";
+import toast from "react-hot-toast";
 
 const Room = () => {
 	const { id: roomId } = useParams();
@@ -20,6 +21,7 @@ const Room = () => {
 
 	function handleGoBack() {
 		navigate("/rooms");
+		toast.success("You have left");
 	}
 
 	useEffect(() => {

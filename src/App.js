@@ -10,6 +10,7 @@ import Room from "./pages/Room/Room";
 import { useSelector } from "react-redux";
 import { useLoadingWithRefresh } from "./hooks/useLoadingWithRefresh";
 import Loader from "./components/shared/Loader/Loader";
+import { Toaster } from "react-hot-toast";
 
 function App() {
 	const { loading } = useLoadingWithRefresh();
@@ -18,6 +19,7 @@ function App() {
 		<Loader message="Loading please wait..." />
 	) : (
 		<BrowserRouter>
+			<Toaster />
 			<Navigation />
 			<Routes>
 				<Route

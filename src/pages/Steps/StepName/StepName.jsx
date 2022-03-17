@@ -5,6 +5,7 @@ import Card from "../../../components/shared/Card/Card";
 import TextInput from "../../../components/shared/TextInput/TextInput";
 import styles from "./StepName.module.css";
 import { setName } from "../../../store/activateSlice";
+import toast from "react-hot-toast";
 
 const StepName = ({ onNext }) => {
 	const { name } = useSelector((state) => state.activate); // get name from activate slice
@@ -14,6 +15,7 @@ const StepName = ({ onNext }) => {
 	function nextStep() {
 		if (!fullName) {
 			console.log("full name required");
+			toast.error("Name is required");
 			return;
 		}
 		dispatch(setName(fullName));

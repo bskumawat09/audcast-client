@@ -7,6 +7,7 @@ import { setAvatar } from "../../../store/activateSlice";
 import { setAuth } from "../../../store/authSlice";
 import Loader from "../../../components/shared/Loader/Loader";
 import styles from "./StepAvatar.module.css";
+import toast from "react-hot-toast";
 
 const StepAvatar = ({ onNext }) => {
 	const [image, setImage] = useState("/images/monkey-avatar.png");
@@ -29,7 +30,8 @@ const StepAvatar = ({ onNext }) => {
 
 	async function submit() {
 		if (!name || !avatar) {
-			console.log("name and avatar are required");
+			console.log("avatar is required");
+			toast.error("Avatar is required");
 			return;
 		}
 
@@ -41,6 +43,7 @@ const StepAvatar = ({ onNext }) => {
 			}
 		} catch (err) {
 			console.log(err);
+			toast.error("Could not upload");
 		} finally {
 			setLoading(false);
 		}

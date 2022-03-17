@@ -13,8 +13,8 @@
 .modalBody {
 	width: 50%;
 	min-width: 320px;
-	max-width: 500px;
-	min-height: 380px;
+	max-width: 480px;
+	min-height: 400px;
 	background: #1d1d1d;
 	border-radius: 1.25em;
 	display: flex;

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { deleteRoom } from "../../http";
 import styles from "./RoomCard.module.css";
+import toast from "react-hot-toast";
 
 const RoomCard = ({ room, setRooms }) => {
 	const navigate = useNavigate();
@@ -12,14 +13,21 @@ const RoomCard = ({ room, setRooms }) => {
 		e.stopPropagation(); // stop event bubbling
 		try {
 			await deleteRoom(room.id);
+			toast.success("Deleted room");
 			setRooms((prev) => prev.filter((r) => r.id !== room.id));
 		} catch (err) {
 			console.log(err);
+			toast.error("Could not delete");
 		}
 	}
 
+	async function handleJoinRoom() {
+		navigate(`/rooms/${room.id}`);
+		toast.success("Joined");
+	}
+
 	return (
-		<div onClick={() => navigate(`/rooms/${room.id}`)} className={styles.card}>
+		<div onClick={handleJoinRoom} className={styles.card}>
 			<h3 className={styles.topic}>{room.topic}</h3>
 
 			<div
@@ -53,7 +61,7 @@ const RoomCard = ({ room, setRooms }) => {
 			<button
 				onClick={handleDelete}
 				className={`${styles.deleteButton} ${
-					room.ownerId.id === user.id ? styles.owner : ""
+					room.ownerId._id === user.id ? styles.active : ""
 				}`}>
 				<img src="/images/delete.png" alt="delete icon" />
 			</button>

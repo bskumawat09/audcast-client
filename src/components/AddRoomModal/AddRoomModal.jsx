@@ -3,6 +3,7 @@ import styles from "./AddRoomModal.module.css";
 import TextInput from "../shared/TextInput/TextInput";
 import { createRoom as create } from "../../http";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const AddRoomModal = ({ onClose }) => {
 	const [roomType, setRoomType] = useState("open");
@@ -12,14 +13,17 @@ const AddRoomModal = ({ onClose }) => {
 	async function createRoom() {
 		if (!topic) {
 			console.log("topic is required");
+			toast.error("Topic is required");
 			return;
 		}
 
 		try {
 			const { data } = await create({ topic, roomType });
+			toast.success("Room is created");
 			navigate(`/rooms/${data.room.id}`);
 		} catch (err) {
 			console.log(err);
+			toast.error("Could not create room");
 		}
 	}
 

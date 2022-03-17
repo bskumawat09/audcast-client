@@ -25,6 +25,7 @@
 
 .avatarLebel {
 	color: #0077ff;
+	text-decoration: underline;
 	margin: 1.875em 0;
 	display: inline-block;
 	cursor: pointer;

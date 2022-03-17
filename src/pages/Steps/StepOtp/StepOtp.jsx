@@ -6,6 +6,7 @@ import TextInput from "../../../components/shared/TextInput/TextInput";
 import { verifyOtp } from "../../../http";
 import { setAuth } from "../../../store/authSlice";
 import styles from "./StepOtp.module.css";
+import toast from "react-hot-toast";
 
 const StepOtp = ({ onNext }) => {
 	const [otp, setOtp] = useState("");
@@ -15,12 +16,22 @@ const StepOtp = ({ onNext }) => {
 	async function submit() {
 		if (!otp || !phone || !hash) {
 			console.log("otp is required");
+			toast.error("OTP is required");
 			return;
 		}
 
 		try {
-			const { data } = await verifyOtp({ otp, phone, hash });
+			const { data } = await toast.promise(verifyOtp({ otp, phone, hash }), {
+				loading: "Verifying OTP...",
+				success: "OTP varified",
+				error: "Invalid OTP"
+			});
+
+			console.log(data);
+
+			// const { data } = await verifyOtp({ otp, phone, hash });
 			dispatch(setAuth(data));
+
 			// onNext(); no need to call onNext() because our protected routes will handle redirecting to "/activate"
 		} catch (err) {
 			console.log(err);

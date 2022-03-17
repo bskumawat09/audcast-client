@@ -6,6 +6,7 @@ import styles from "../StepPhoneEmail.module.css";
 import { sendOtp } from "../../../../http";
 import { useDispatch } from "react-redux";
 import { setOtp } from "../../../../store/authSlice";
+import toast from "react-hot-toast";
 
 const Phone = ({ onNext }) => {
 	const [phoneNumber, setPhoneNumber] = useState("");
@@ -14,15 +15,18 @@ const Phone = ({ onNext }) => {
 	async function submit() {
 		if (!phoneNumber) {
 			console.log("phone number is required");
+			toast.error("Phone number is required");
 			return;
 		}
 
 		try {
 			const { data } = await sendOtp({ phone: phoneNumber }); // api request
+			toast.success("OTP sent");
 			dispatch(setOtp({ phone: data.phone, hash: data.hash }));
 			onNext();
 		} catch (err) {
 			console.log(err);
+			toast.success("Could not send OTP");
 		}
 	}
 
