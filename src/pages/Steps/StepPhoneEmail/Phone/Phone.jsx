@@ -12,6 +12,8 @@ const Phone = ({ onNext }) => {
 	const [phoneNumber, setPhoneNumber] = useState("");
 	const dispatch = useDispatch();
 
+	const pattern = /^(\+91)[6-9]\d{9}$/;
+
 	async function submit() {
 		if (!phoneNumber) {
 			console.log("phone number is required");
@@ -19,14 +21,21 @@ const Phone = ({ onNext }) => {
 			return;
 		}
 
+		// check against regex
+		if (!phoneNumber.match(pattern)) {
+			console.log("enter valid phone number");
+			toast.error("Enter valid phone number");
+			return;
+		}
+
 		try {
 			const { data } = await sendOtp({ phone: phoneNumber }); // api request
-			toast.success("OTP sent");
+			toast.success(`OTP sent on ${phoneNumber}`);
 			dispatch(setOtp({ phone: data.phone, hash: data.hash }));
 			onNext();
 		} catch (err) {
 			console.log(err);
-			toast.success("Could not send OTP");
+			toast.error("Could not send OTP");
 		}
 	}
 

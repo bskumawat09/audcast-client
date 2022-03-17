@@ -11,23 +11,24 @@ import toast from "react-hot-toast";
 const StepOtp = ({ onNext }) => {
 	const [otp, setOtp] = useState("");
 	const dispatch = useDispatch();
-	const { phone, hash } = useSelector((state) => state.auth.otp); // get data from auth slice
+	const { phone, hash, email } = useSelector((state) => state.auth.otp); // get data from auth slice
 
 	async function submit() {
-		if (!otp || !phone || !hash) {
+		if (!otp || !hash) {
 			console.log("otp is required");
 			toast.error("OTP is required");
 			return;
 		}
 
 		try {
-			const { data } = await toast.promise(verifyOtp({ otp, phone, hash }), {
-				loading: "Verifying OTP...",
-				success: "OTP varified",
-				error: "Invalid OTP"
-			});
-
-			console.log(data);
+			const { data } = await toast.promise(
+				verifyOtp({ otp, phone, hash, email }),
+				{
+					loading: "Verifying OTP...",
+					success: "OTP varified",
+					error: "Invalid OTP"
+				}
+			);
 
 			// const { data } = await verifyOtp({ otp, phone, hash });
 			dispatch(setAuth(data));
@@ -40,7 +41,7 @@ const StepOtp = ({ onNext }) => {
 
 	return (
 		<div className="cardWrapper">
-			<Card title="Enter the OTP sent on your phone" icon="party-emoji.png">
+			<Card title="Enter the OTP" icon="party-emoji.png">
 				<TextInput
 					value={otp}
 					onChange={(e) => setOtp(e.target.value)}
