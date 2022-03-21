@@ -1,11 +1,28 @@
 # Audcast - The Audio Podcast
 
-> It is a Real-time Audio Podcast platform made using React.js and WebRTC.
+> It is a Real-time Audio Podcast platform made using React.js, Sockets and WebRTC.
 
 ## Test Account
 
-Phone No. : +919876765454
-Default OTP : 97979
+- Phone No. : **`+919876765454`**
+- Default OTP : **`97979`**
+
+## Features
+
+- [x] User authentication using OTP and phone/email
+- [x] User activation by providing full-name and uploading avatar
+- [x] User logout
+- [x] Protected routes
+- [x] View all the public rooms
+- [x] Create a room
+- [x] Delete a room
+- [x] Join/leave a room
+- [x] Real-time Peer-to-Peer audio communication via WebRTC
+- [x] Mute/unmute with real-time UI change using Sockets
+- [x] Responsive UI for Mobile/Tab/Laptop
+- [ ] Edit a room
+- [ ] View my rooms (public, social and private)
+- [ ] Search-bar
 
 ## Getting Started with Create React App
 
