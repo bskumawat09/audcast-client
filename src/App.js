@@ -18,53 +18,57 @@ function App() {
 	return loading ? (
 		<Loader message="Loading please wait..." />
 	) : (
-		<BrowserRouter>
-			<Toaster />
-			<Navigation />
-			<Routes>
-				<Route
-					path="/"
-					exact
-					element={
-						<GuestRoute>
-							<Home />
-						</GuestRoute>
-					}
-				/>
-				<Route
-					path="/authenticate"
-					element={
-						<GuestRoute>
-							<Authenticate />
-						</GuestRoute>
-					}
-				/>
-				<Route
-					path="/activate"
-					element={
-						<SemiProtectedRoute>
-							<Activate />
-						</SemiProtectedRoute>
-					}
-				/>
-				<Route
-					path="/rooms"
-					element={
-						<ProtectedRoute>
-							<Rooms />
-						</ProtectedRoute>
-					}
-				/>
-				<Route
-					path="/rooms/:id"
-					element={
-						<ProtectedRoute>
-							<Room />
-						</ProtectedRoute>
-					}
-				/>
-			</Routes>
-		</BrowserRouter>
+		<>
+			<div>
+				<Toaster />
+			</div>
+			<BrowserRouter>
+				<Navigation />
+				<Routes>
+					<Route
+						path="/"
+						exact
+						element={
+							<GuestRoute>
+								<Home />
+							</GuestRoute>
+						}
+					/>
+					<Route
+						path="/authenticate"
+						element={
+							<GuestRoute>
+								<Authenticate />
+							</GuestRoute>
+						}
+					/>
+					<Route
+						path="/activate"
+						element={
+							<SemiProtectedRoute>
+								<Activate />
+							</SemiProtectedRoute>
+						}
+					/>
+					<Route
+						path="/rooms"
+						element={
+							<ProtectedRoute>
+								<Rooms />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="/rooms/:id"
+						element={
+							<ProtectedRoute>
+								<Room />
+							</ProtectedRoute>
+						}
+					/>
+				</Routes>
+			</BrowserRouter>
+		</>
 	);
 }
 

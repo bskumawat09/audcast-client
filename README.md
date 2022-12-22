@@ -7,6 +7,32 @@
 - Phone No. : **`+919876765454`**
 - Default OTP : **`97979`**
 
+# Screenshots
+
+## Home page
+
+![Home](/screenshots/home_page_audcast.netlify.app.jpeg)
+
+## Phone/Email page
+
+![Home](/screenshots/phone_page_audcast.netlify.app.jpeg)
+
+## OTP page
+
+![Home](/screenshots/otp_page_audcast.netlify.app.jpeg)
+
+## All rooms page
+
+![Home](/screenshots/rooms_page_audcast.netlify.app.jpeg)
+
+## Room page
+
+![Home](/screenshots/room_page_audcast.netlify.app.jpeg)
+
+## Add room page
+
+![Home](/screenshots/add_room_modal_audcast.netlify.app.jpeg)
+
 ## Features
 
 - [x] User authentication using OTP and phone/email
