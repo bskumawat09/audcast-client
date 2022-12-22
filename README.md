@@ -15,23 +15,23 @@
 
 ## Phone/Email page
 
-![Home](/screenshots/phone_page_audcast.netlify.app.jpeg)
+![Phone](/screenshots/phone_page_audcast.netlify.app.jpeg)
 
 ## OTP page
 
-![Home](/screenshots/otp_page_audcast.netlify.app.jpeg)
+![OTP](/screenshots/otp_page_audcast.netlify.app.jpeg)
 
 ## All rooms page
 
-![Home](/screenshots/rooms_page_audcast.netlify.app.jpeg)
+![All rooms](/screenshots/rooms_page_audcast.netlify.app.jpeg)
 
 ## Room page
 
-![Home](/screenshots/room_page_audcast.netlify.app.jpeg)
+![Room](/screenshots/room_page_audcast.netlify.app.jpeg)
 
 ## Add room page
 
-![Home](/screenshots/add_room_modal_audcast.netlify.app.jpeg)
+![Add room](/screenshots/add_room_modal_audcast.netlify.app.jpeg)
 
 ## Features
 
