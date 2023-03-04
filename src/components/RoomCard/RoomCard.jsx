@@ -61,7 +61,7 @@ const RoomCard = ({ room, setRooms }) => {
 			<button
 				onClick={handleDelete}
 				className={`${styles.deleteButton} ${
-					room.ownerId._id === user.id ? styles.active : ""
+					room.ownerId === user.id ? styles.active : ""
 				}`}>
 				<img src="/images/delete.png" alt="delete icon" />
 			</button>

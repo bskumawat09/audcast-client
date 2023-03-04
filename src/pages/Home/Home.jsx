@@ -13,12 +13,11 @@ const Home = () => {
 
 	return (
 		<div className="cardWrapper">
-			<Card title="Welcome to Audcast !" icon="party-emoji.png">
+			<Card title="Welcome To Audcast !" icon="party-emoji.png">
 				<p className={styles.text}>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Est
-					consequatur nisi eos perspiciatis quisquam illum voluptate adipisci
-					dicta fugiat. Voluptatibus tenetur quidem neque numquam laborum, alias
-					culpa.
+					Audcast is kind of real-time audio podcast platform, where you can
+					join rooms or create your own to get in touch with your peers and can
+					easily discuss your topic.
 				</p>
 				<div>
 					<Button text="Let's Go" onClick={startRegister} />

@@ -4,34 +4,34 @@
 
 ## Test Account
 
-- Phone No. : **`+919876765454`**
-- Default OTP : **`97979`**
+- Test Phone No. : **`+919876543210`**
+- Test OTP : **`12345`**
 
 # Screenshots
 
 ## Home page
 
-![Home](/screenshots/home_page_audcast.netlify.app.jpeg)
+![Home](/screenshots/home_page_audcast.jpeg)
 
 ## Phone/Email page
 
-![Phone](/screenshots/phone_page_audcast.netlify.app.jpeg)
+![Phone](/screenshots/phone_page_audcast.jpeg)
 
 ## OTP page
 
-![OTP](/screenshots/otp_page_audcast.netlify.app.jpeg)
+![OTP](/screenshots/otp_page_audcast.jpeg)
 
 ## All rooms page
 
-![All rooms](/screenshots/rooms_page_audcast.netlify.app.jpeg)
+![All rooms](/screenshots/rooms_page_audcast.jpeg)
 
 ## Room page
 
-![Room](/screenshots/room_page_audcast.netlify.app.jpeg)
+![Room](/screenshots/room_page_audcast.jpeg)
 
 ## Add room page
 
-![Add room](/screenshots/add_room_modal_audcast.netlify.app.jpeg)
+![Add room](/screenshots/add_room_modal_audcast.jpeg)
 
 ## Features
 
@@ -39,16 +39,17 @@
 - [x] User activation by providing full-name and uploading avatar
 - [x] User logout
 - [x] Protected routes
-- [x] View all the public rooms
-- [x] Create a room
-- [x] Delete a room
+- [x] View all rooms (open or owned)
+- [x] Create new room
+- [x] Delete owned room
 - [x] Join/leave a room
 - [x] Real-time Peer-to-Peer audio communication via WebRTC
 - [x] Mute/unmute with real-time UI change using Sockets
 - [x] Responsive UI for Mobile/Tab/Laptop
 - [ ] Edit a room
 - [ ] View my rooms (public, social and private)
-- [ ] Search-bar
+- [ ] Search room
+- [ ] Share room link
 
 ## Getting Started with Create React App
 
