@@ -76,7 +76,7 @@ const GuestRoute = ({ children }) => {
 	// get data from auth slice
 	const { isAuth } = useSelector((state) => state.auth);
 
-	return isAuth ? <Navigate to="/rooms" /> : children;
+	return isAuth ? <Navigate to="/rooms" replace /> : children;
 };
 
 const SemiProtectedRoute = ({ children }) => {
@@ -84,13 +84,13 @@ const SemiProtectedRoute = ({ children }) => {
 
 	if (!isAuth) {
 		// if user is not logged-in
-		return <Navigate to="/" />;
+		return <Navigate to="/" replace />;
 	} else if (!user.activated) {
 		// if user is logged-in but not activated
 		return children;
 	} else {
 		// if user is logged-in as well as activated
-		return <Navigate to="/rooms" />;
+		return <Navigate to="/rooms" replace />;
 	}
 };
 
@@ -99,10 +99,10 @@ const ProtectedRoute = ({ children }) => {
 
 	if (!isAuth) {
 		// if user is not logged-in
-		return <Navigate to="/" />;
+		return <Navigate to="/" replace />;
 	} else if (!user.activated) {
 		// if user is logged-in but not activated
-		return <Navigate to="/activate" />;
+		return <Navigate to="/activate" replace />;
 	} else {
 		// if user is logged-in as well as activated
 		return children;
